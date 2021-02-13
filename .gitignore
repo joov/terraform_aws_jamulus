@@ -1,0 +1,14 @@
+/.terraform
+/secrets
+*.tfstate
+
+*.backup
+*_key
+secrets*
+.terraform*
+.vscode/
+
+**/*.exe
+
+*.tfvars
+.terraform.lock.*
