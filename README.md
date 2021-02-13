@@ -16,11 +16,13 @@ Work derived from https://github.com/AvasDream/terraform_aws_jitsi_meet
 
 1. create a file `credentials` in `~/.aws` (Unix) or `%HOMEPATH%\.aws` (Windows), see below
 2. Create a `terraform.tfvars` file (see below).
-3. Copy example Content in Variables file.
-4. Enter your own data.
-5. Edit `backend.tf` to suit your needs. The S3-Bucket has to be present before running terraform (unfortunately backend-definition [cannot contain variables](https://www.terraform.io/docs/language/settings/backends/configuration.html)!)
+3. Copy example content  given below to `terraform.tfvars`.
+4. Enter your own data into `terraform.tfvars`.
+5. Edit `backend.tf` to fit to your needs. This is neccessary as terraform backend-definitions [cannot contain variables](https://www.terraform.io/docs/language/settings/backends/configuration.html)!)
 6. Execute `terraform init` (Use `terraform init -reconfigure` if you changed the backend)
 7. Execute `terraform apply`
+
+If everything works right, you get an IP address as an output which is the public address of the jamulus server. After that you still have to wait for 5-10 minutes until the server is ready, as the installation script has to run first.
 
 ## Files
 
