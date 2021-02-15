@@ -20,3 +20,24 @@ variable "jamulus_max_users" {
   description = "Max Numbers of jamulus users"
   default = "10"
 }
+
+variable "jamulus_rooms" {
+  description = "Numbers of jamulus rooms on server"
+  default = 1
+}
+
+variable "jamulus_hello_text" {
+  description = "Hello Text for Jamulus rooms"
+  default = "My Jamulus Room"
+}
+
+variable "jamulus_city" {
+  description = "City of jamulus server"
+  default = "Frankfurt"
+}
+
+
+variable "jamulus_country" {
+  description = "Country of jamulus server"
+  default = "82"
+}

@@ -4,6 +4,28 @@ Create a [Jamulus](https://jamulus.io/de/) in the AWS cloud.
 
 Work derived from https://github.com/AvasDream/terraform_aws_jitsi_meet
 
+## What is does
+
+Terraform script to create a Jamulus server on the aws cloud. Everything is automatted. The server can host one or many Jamulus instances, i.e. different rooms.
+All rooms are connected to a central server, which is the first room.
+
+The server does not record anything.
+
+## How to use
+
+These steps are one time only:
+
+- Get the requirements (see below)
+- Clone the repo
+- Configure your settings (see below)
+- Call `terraform init` in a shell script inside the repo-folder
+
+Any time you need the server do:
+
+- `terraform apply` to create the server and rooms (answer `yes` if asked to perform these actions)
+- Note down the `instance_ip_addr` given at the end of terraforms outputs and give them to your friends. They shoud enter it as `user defined central server` in the settings window and choose `user defined` in the connection window
+- `terraform destroy` to completely remove all servers / rooms.
+
 ## Requirements
 
 - Terraform is installed and in the current \$PATH
@@ -42,5 +64,8 @@ instance_type = "t2.large"         # AWS instance type
 ssh_key_name = "terraform-key"     # AWS key
 ssh_ip_whitelist = ["1.3.3.7/32"]  # Your Computeres public IP address - limits ssh-access to instance
 jamulus_max_users = "20"           # Maximum number of connected users
+jamulus_rooms = 3                  # Number of rooms on server
+jamulus_hello_text = "KottonKlub Room"  # Hello text from Server
+jamulus_city = "Solingen"          # City for server info
+jamulus_country = "82"             # Country info (82 is Germany)
 ```
-

@@ -10,7 +10,7 @@ resource "aws_security_group" "allow_connections_jamulus" {
   }
   ingress {
     from_port   = 22124
-    to_port     = 22124
+    to_port     = 22124 + var.jamulus_rooms - 1
     protocol    = "udp"
     cidr_blocks = ["0.0.0.0/0"]
   }
