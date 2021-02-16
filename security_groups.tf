@@ -1,5 +1,5 @@
 resource "aws_security_group" "allow_connections_jamulus" {
-  name        = "allow_connections_jitsi-meet"
+  name        = "onnections_jamulus"
   description = "Allow TLS inbound traffic for ssh but only for the host PCs external IP."
 
   ingress {
