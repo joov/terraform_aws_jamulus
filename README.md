@@ -31,8 +31,7 @@ Any time you need the server do:
 - Terraform is installed and in the current \$PATH
 - You know your AWS access and secret keys. [Official Documentation](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html)
 - You created an AWS SSH Key. [Official Documentation](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html)
-- You have created an S3 bucket
-- You know your public IP address ([find out](https://www.iplocation.net/find-ip-address))
+- You have created an S3 bucket with a unique name
 
 ## Setup
 
@@ -61,11 +60,26 @@ aws_secret_access_key = put-your-secret-access-key
 ```properties
 aws_region = "eu-central-1"        # AWS Region
 instance_type = "t2.large"         # AWS instance type
-ssh_key_name = "terraform-key"     # AWS key
-ssh_ip_whitelist = ["1.3.3.7/32"]  # Your Computeres public IP address - limits ssh-access to instance
+ssh_key_name = "your-aws-ssh-key"  # AWS key
 jamulus_max_users = "20"           # Maximum number of connected users
 jamulus_rooms = 3                  # Number of rooms on server
 jamulus_hello_text = "KottonKlub Room"  # Hello text from Server
 jamulus_city = "Solingen"          # City for server info
 jamulus_country = "82"             # Country info (82 is Germany)
+```
+
+## Troubleshooting
+
+The Jitsi instance is per default not accessible via ssh for security reasons. If you have to debug it perform the following steps:
+
+- Get your public IP address, e.g. by visiting [this site](https://get-myip.com/)
+- Open the [AWS Management Console](https://aws.amazon.com) and open the `EC2-Dashboard`
+- Choose `security groups` from the list on the left side and select `allow_connections_jitsi-meet`
+- Choose `Rules for incoming traffic`, click `edit rules for incoming traffic`
+- Add a rule for SSH and enter `<your-ip-address>/0` as source
+
+Then you can connect to the instance. Remember to include `your-aws-ssh-key.pem` into the ssh-command, e.g.
+
+```bash
+ssh -i ~/.ssh/your-aws-ssh-key.pem ubuntu@<ip-from-output>
 ```
