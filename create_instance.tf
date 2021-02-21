@@ -6,7 +6,7 @@ data "template_file" "install_script" {
     jamulus_hello_text = var.jamulus_hello_text
     jamulus_city = var.jamulus_city
     jamulus_country = var.jamulus_country
-    jamulus_version = "4800e05"
+    jamulus_version = "6e630f4"
   }
 }
 
